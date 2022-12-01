@@ -10,6 +10,7 @@ git clone https://github.com/Adrien-Ray/trame_theme_wordpress.git
 ## Credits
 
 Ce starter de thème WordPress est mis à disposition du public par [Adrien-Ray](https://github.com/Adrien-Ray)
+
 contact: [formulaire de contact](https://portfolio.accesdenied.net/pages/apropos.php)
 
 ## fetchFeature
