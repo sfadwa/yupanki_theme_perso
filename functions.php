@@ -31,6 +31,19 @@ function register_assets(){
 add_action('wp_enqueue_scripts', 'register_assets');
 
 
+function register_footer_assets(){
+        
+      wp_enqueue_script(
+            'nav',
+            get_template_directory_uri().'/assets/scripts/nav.js',
+            array(),
+            '1.0',
+            true
+      );
+  
+}
+add_action('wp_enqueue_scripts', 'register_footer_assets');
+
 // suppression de la balise title dans la function wp_head
 // remove_action( 'wp_head', '_wp_render_title_tag', 1 );
 
