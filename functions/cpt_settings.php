@@ -5,6 +5,7 @@
     // [ ] uncomment second function (add_custom_cpt_link)
     // [ ] uncomment part for hide CPT legacy entry
     // [ ] uncomment and rewrite id in admin.css
+    // [ ] add custom fields with ACF plugin
 
 function cpt_customSiteSettings() {
 
