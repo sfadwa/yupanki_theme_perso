@@ -1,0 +1,6 @@
+/*HIDE DELETE AND ADD. rewrite id of post.*/
+/* 
+a[href*="/wp-admin/post-new.php?post_type=sitesettings"],
+a[href*="/wp-admin/post.php?post=30&action=trash"] {
+    display: none;
+} */

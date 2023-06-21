@@ -4,45 +4,10 @@ add_theme_support( 'post-thumbnails' );
 add_theme_support( 'title-tag' );
 add_theme_support( 'menus' );
 
-function register_assets(){
-	
-    wp_enqueue_style(
-          'reset-css',
-          get_template_directory_uri().'/assets/styles/reset.css',
-          array(),
-          '1.0'
-    );
-	
-    wp_enqueue_style(
-          'main-css',
-          get_template_directory_uri().'/assets/styles/main.css',
-          array(),
-          '1.0'
-    );
-	
-    wp_enqueue_style(
-          'content-css',
-          get_template_directory_uri().'/assets/styles/content.css',
-          array(),
-          '1.0'
-    );
+include 'functions/register_assets.php';
 
-}
-add_action('wp_enqueue_scripts', 'register_assets');
-
-
-function register_footer_assets(){
-        
-      wp_enqueue_script(
-            'nav',
-            get_template_directory_uri().'/assets/scripts/nav.js',
-            array(),
-            '1.0',
-            true
-      );
-  
-}
-add_action('wp_enqueue_scripts', 'register_footer_assets');
+// add custom settings page:
+// include 'functions/cpt_settings.php';
 
 // suppression de la balise title dans la function wp_head
 // remove_action( 'wp_head', '_wp_render_title_tag', 1 );
@@ -54,3 +19,17 @@ add_action(
       add_theme_support( 'html5', [ 'script', 'style' ] );
   }
 );
+
+// prohibit public access to the API
+add_filter( 'rest_authentication_errors', function( $result ) {
+      if ( ! empty( $result ) ) {
+        return $result;
+      }
+      if ( ! is_user_logged_in() ) {
+        return new WP_Error( 'rest_not_logged_in', 'Vous devez être connecté pour accéder à cette ressource.', array( 'status' => 401 ) );
+      }
+      if ( ! current_user_can( 'administrator' ) ) {
+        return new WP_Error( 'rest_not_admin', 'Vous n\'avez pas les droits suffisants pour accéder à cette ressource.', array( 'status' => 401 ) );
+      }
+      return $result;
+ });
