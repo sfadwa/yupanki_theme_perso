@@ -105,3 +105,21 @@ function admin_css() {
 	wp_enqueue_style($admin_handle, $admin_stylesheet);
 }
 add_action('admin_print_styles', 'admin_css', 11); */
+
+
+
+// snippet to get values of settings
+
+/* $args = array(
+    'post_type' => 'siteSettings',
+    'posts_per_page' => 1
+);
+
+$siteSettings = get_posts($args);
+
+if ($siteSettings) {
+    foreach ($siteSettings as $siteSetting) {
+        $GLOBALS['siteSetting_fieldName'] = get_field('fieldName', $siteSetting->ID);
+        $GLOBALS['siteSetting_fieldName2'] = get_field('fieldName2', $siteSetting->ID);
+    }
+} */
